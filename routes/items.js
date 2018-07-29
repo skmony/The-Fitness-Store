@@ -54,12 +54,13 @@ router.get("/items/:id",function(req, res) {
 });
 
 router.get("/items/:id/add",isLoggedIn,function(req,res){
+   console.log("error");
    Item.findById(req.params.id,function(err, foundItem){
        if(err){
            console.log(err);
        }else{
            console.log(foundItem);
-           //currentUser.cart.push(foundItem._id);
+            
        }
        
    });

@@ -8,43 +8,51 @@
 	<link rel="stylesheet" href="/stylesheets/main.css">
 </HEAD>
 <BODY>
-	<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">The Fitness Store</a>
-      
-    </div>
-
+  
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">The Fitness Store</a>
+        
+      </div>
       <ul class="nav navbar-nav">
-        <li><a href="/items">Our Products</a></li>
-      </ul>  
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/cart"><i class="fas fa-shopping-cart"></i><%=" "%>Cart</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
-          <%if(currentUser){%> 
-            <%="Hi, "+currentUser.firstName%>
-          <% }else{%>
-             User Management
-          <% }%>  
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          	<% if(!currentUser){%>
-          	<li><a href="/login">Login <i class="fas fa-sign-in-alt"></i></a></li>
-            <li><a href="/register">SignUp <i class="fas fa-user-plus"></i></a></li>
+          <li><a href="/items">Our Products</a></li>
+      </ul>   
+        <form class="navbar-form navbar-left" action="/items" method="GET">
+            <div class="form-group">
+              <input type="text" name="search" class="form-control" placeholder="Search our store">
+              <button type="submit" class="btn btn-default">Search</button>
+            </div>  
+        </form>
+         
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/cart"><i class="fas fa-shopping-cart"></i><%=" "%>Cart</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>
+            <%if(currentUser){%> 
+              <%="Hi, "+currentUser.firstName%>
             <% }else{%>
-            <li><a href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a></li>
-            <% }%>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+               User Management
+            <% }%>  
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            	<% if(!currentUser){%>
+            	<li><a href="/login">Login <i class="fas fa-sign-in-alt"></i></a></li>
+              <li><a href="/register">SignUp <i class="fas fa-user-plus"></i></a></li>
+              <% }else{%>
+              <li><a href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+              <% }%>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
+

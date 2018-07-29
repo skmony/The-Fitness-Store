@@ -5,7 +5,7 @@
     <p class="lead"><%=item.name%></p>
   </div>
   
-  <div class="col-md-6">
+  <div class="col-md-6 col-xs-6">
     <div class="thumbnail">
         <div class="card mb-3">
           <img class="card-img-top" src="<%= item.image %>" alt="<%= item.name %>">
@@ -23,8 +23,8 @@
             <p>Delievery is available at <%=currentUser.pincode%></p>
             <p>Item will be delievered to <%=currentUser.city%>,<%=currentUser.state%> within 3-4 days.</p>
             <% }%>
-            <a class="btn btn-info" href="/items/<%=item._id%>/add">ADD TO CART</a>
-            <a class="btn btn-success" href="/items/<%=item._id%>/buy">BUY NOW</a>
+            <a class="btn btn-info" href="/items/<%= item._id %>/add">ADD TO CART</a>
+            <a class="btn btn-success" href="/items/<%= item._id %>/buy">BUY NOW</a>
           </div>
         </div>
     </div>    
