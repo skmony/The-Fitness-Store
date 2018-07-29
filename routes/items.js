@@ -4,12 +4,21 @@ var Item=require("../models/items");
 var User=require("../models/user");
 
 router.get("/items",function(req,res){
-    Item.find({},function(err,items){
-        if(err){
-            console.log(err)
-        }else{
-            res.render("index",{items:items});
-        }
+    var perPage=6;
+    var pageQuery = parseInt(req.query.page);
+    var pageNumber = pageQuery ? pageQuery : 1;
+    Item.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err,items){
+        Item.countDocuments().exec(function (err, count) {
+            if(err){
+                console.log(err)
+            }else{
+                res.render("index",{
+                    items:items,
+                    current: pageNumber,
+                     pages: Math.ceil(count / perPage)
+                });
+            }
+        });
     });
 });
 
