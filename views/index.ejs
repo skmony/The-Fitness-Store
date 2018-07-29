@@ -9,6 +9,11 @@
             <!--<% }%>-->
         </div>    
     </header>
+    <div class="col-md-12" style="text-align:center"}>
+         <%if(noMatch){%>
+            <h3><%=noMatch%></h3>
+            <%}%>
+        </div>    
     <div class="row text-center flex-wrap">
         <%items.forEach(function(item){%>
             <div class="col-sm-6 col-md-4">
@@ -34,13 +39,13 @@
         <% if (current == 1) { %>
         <li class="disabled"><a>First</a></li>
         <% } else { %>
-        <li><a href="/items">First</a></li>
+        <li><a href="/items<%if(search){%>?search=<%=search%><%}%>">First</a></li>
         <% } %>
  
         <% if (current == 1) { %>
         <li class="disabled"><a>«</a></li>
         <% } else { %>
-        <li><a href="/items?page=<%= Number(current) - 1 %>">«</a></li>
+        <li><a href="/items?page=<%= Number(current) - 1 %><%if(search){%>&search=<%=search%><%}%>">«</a></li>
         <% } %>
  
         <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
@@ -51,7 +56,7 @@
         <% if (i == current) { %>
         <li class="active"><a><%= i %></a></li>
         <% } else { %>
-        <li><a href="/items?page=<%= i %>"><%= i %></a></li>
+        <li><a href="/items?page=<%= i %><%if(search){%>&search=<%=search%><%}%>"><%= i %></a></li>
         <% } %>
         <% if (i == Number(current) + 4 && i < pages) { %>
         <li class="disabled"><a>...</a></li>
@@ -61,13 +66,13 @@
         <% if (current == pages) { %>
         <li class="disabled"><a>»</a></li>
         <% } else { %>
-        <li><a href="/items?page=<%= Number(current) + 1 %>">»</a></li>
+        <li><a href="/items?page=<%= Number(current) + 1 %><%if(search){%>&search=<%=search%><%}%>">»</a></li>
         <% } %>
  
         <% if (current == pages) { %>
         <li class="disabled"><a>Last</a></li>
         <% } else { %>
-        <li><a href="/items?page=<%= pages %>">Last</a></li>
+        <li><a href="/items?page=<%= pages %><%if(search){%>&search=<%=search%><%}%>">Last</a></li>
         <% } %>
     </ul>
     <% } %>

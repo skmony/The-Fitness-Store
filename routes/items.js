@@ -3,23 +3,51 @@ var router=express.Router();
 var Item=require("../models/items");
 var User=require("../models/user");
 
-router.get("/items",function(req,res){
-    var perPage=6;
+//INDEX - show all campgrounds
+router.get("/items", function(req, res){
+    var perPage = 6;
     var pageQuery = parseInt(req.query.page);
     var pageNumber = pageQuery ? pageQuery : 1;
-    Item.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function(err,items){
-        Item.countDocuments().exec(function (err, count) {
-            if(err){
-                console.log(err)
-            }else{
-                res.render("index",{
-                    items:items,
-                    current: pageNumber,
-                     pages: Math.ceil(count / perPage)
-                });
-            }
+    var noMatch = null;
+    if(req.query.search) {
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Item.find({name: regex}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allItems) {
+            Item.countDocuments({name: regex}).exec(function (err, count) {
+                if (err) {
+                    console.log(err);
+                    res.redirect("back");
+                } else {
+                    if(allItems.length < 1) {
+                        noMatch = "No campgrounds match that query, please try again.";
+                    }
+                    res.render("index", {
+                        items: allItems,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage),
+                        noMatch: noMatch,
+                        search: req.query.search
+                    });
+                }
+            });
         });
-    });
+    } else {
+        // get all campgrounds from DB
+        Item.find({}).skip((perPage * pageNumber) - perPage).limit(perPage).exec(function (err, allItems) {
+            Item.countDocuments().exec(function (err, count) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.render("index", {
+                        items: allItems,
+                        current: pageNumber,
+                        pages: Math.ceil(count / perPage),
+                        noMatch: noMatch,
+                        search: false
+                    });
+                }
+            });
+        });
+    }
 });
 
 router.post("/items",function(req,res){
@@ -77,5 +105,9 @@ function isLoggedIn(req,res,next){
     }
     res.redirect("/login");
 }
+
+function escapeRegex(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+};
 
 module.exports=router;
