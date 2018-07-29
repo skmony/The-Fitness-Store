@@ -16,6 +16,13 @@
             <h5 class="card-title"><%= item.name %></h5>
             <hr>
             <p class="card-text"><%= item.description %></p>
+            <hr>
+            <%if(!currentUser){%> 
+            <p>To check whether this item can be delievered to your place, please <a href="/login">Login</a></p>
+            <% }else{%>
+            <p>Delievery is available at <%=currentUser.pincode%></p>
+            <p>Item will be delievered to <%=currentUser.city%>,<%=currentUser.state%> within 3-4 days.</p>
+            <% }%>
             <a class="btn btn-info" href="/items/<%=item._id%>/add">ADD TO CART</a>
             <a class="btn btn-success" href="/items/<%=item._id%>/buy">BUY NOW</a>
           </div>

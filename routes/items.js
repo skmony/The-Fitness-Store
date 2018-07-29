@@ -28,7 +28,6 @@ router.post("/items",function(req,res){
             res.redirect("/items")
         }
     })
-    res.redirect("/items")
 });
 
 router.get("/items/new",function(req, res) {
@@ -45,12 +44,13 @@ router.get("/items/:id",function(req, res) {
     });  
 });
 
-router.get("/items/:id/add",function(req,res){
+router.get("/items/:id/add",isLoggedIn,function(req,res){
    Item.findById(req.params.id,function(err, foundItem){
        if(err){
            console.log(err);
        }else{
            console.log(foundItem);
+           //currentUser.cart.push(foundItem._id);
        }
        
    });
