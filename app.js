@@ -14,7 +14,7 @@ var itemRoutes      =require("./routes/items"),
 
 var url=process.env.DATABASEURL||"mongodb://localhost/myShop";
 mongoose.connect(url);
-
+//mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
