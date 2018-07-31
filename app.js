@@ -12,7 +12,7 @@ var itemRoutes      =require("./routes/items"),
     authRoutes      =require("./routes/auth"),
     indexRoutes     =require("./routes/index");
 
-var url="mongodb://localhost/myShop"||process.env.DATABASEURL;
+var url=process.env.DATABASEURL||"mongodb://localhost/myShop";
 mongoose.connect(url);
 
 
