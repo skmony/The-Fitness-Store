@@ -11,8 +11,9 @@ var express         =require("express"),
 var itemRoutes      =require("./routes/items"),
     authRoutes      =require("./routes/auth"),
     indexRoutes     =require("./routes/index");
-    
-mongoose.connect(process.env.DATABASEURL);
+
+var url="mongodb://localhost/myShop"||process.env.DATABASEURL;
+mongoose.connect(url);
 
 
 app.use(bodyParser.urlencoded({extended:true}));
