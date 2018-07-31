@@ -11,10 +11,9 @@ var express         =require("express"),
 var itemRoutes      =require("./routes/items"),
     authRoutes      =require("./routes/auth"),
     indexRoutes     =require("./routes/index");
-
-//mongoose.connect("mongodb://localhost/myShop");
-mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
-
+    
+mongoose.connect(process.env.DATABASEURL);
+//mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
