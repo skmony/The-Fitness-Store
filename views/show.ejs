@@ -25,6 +25,14 @@
             <% }%>
             <a class="btn btn-info" href="/items/<%= item._id %>/add">ADD TO CART</a>
             <a class="btn btn-success" href="/items/<%= item._id %>/buy">BUY NOW</a>
+            <%if(currentUser&&currentUser.isAdmin){ %>
+              <div class="pull-right">
+                  <a class="btn btn-warning" href="/items/<%= item._id %>/edit">Edit</a>
+                  <form action="/items/<%=item._id%>?_method=DELETE" method="POST" class="delete-form" >
+                      <button class="btn btn-danger">Delete</button>
+                  </form>
+              </div>
+            <% }%>
           </div>
         </div>
     </div>    

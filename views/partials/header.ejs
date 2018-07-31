@@ -44,11 +44,13 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
             	<% if(!currentUser){%>
-            	<li><a href="/login">Login <i class="fas fa-sign-in-alt"></i></a></li>
-              <li><a href="/register">SignUp <i class="fas fa-user-plus"></i></a></li>
+            	<li><a href="/login">Login </a></li>
+              <li><a href="/register">SignUp </a></li>
               <% }else{%>
-              <li><a href="/logout">Logout <i class="fas fa-sign-out-alt"></i></a></li>
-              <% }%>
+              <li><a href="/logout">Logout</a></li>
+              <% if(currentUser.isAdmin){%>
+              <li><a href="/items/new">Add new item</a></li>
+              <% }}%>
             </ul>
           </li>
         </ul>

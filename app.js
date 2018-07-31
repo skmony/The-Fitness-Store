@@ -3,6 +3,7 @@ var express         =require("express"),
     bodyParser      =require("body-parser"),
     mongoose        =require("mongoose"),
     Item            =require("./models/items"),
+    methodOverride  =require("method-override"),
     passport        =require("passport"),
     localStrategy   =require("passport-local"),
     User            =require("./models/user");
@@ -11,13 +12,14 @@ var itemRoutes      =require("./routes/items"),
     authRoutes      =require("./routes/auth"),
     indexRoutes     =require("./routes/index");
 
-//mongoose.connect("mongodb://localhost/myShop");
-mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
+mongoose.connect("mongodb://localhost/myShop");
+//mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
 
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 
 //Passport Configuration
 app.use(require("express-session")({

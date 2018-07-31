@@ -88,7 +88,6 @@ router.get("/items/:id/add",isLoggedIn,function(req,res){
            console.log(err);
        }else{
            console.log(foundItem);
-            
        }
        
    });
@@ -98,6 +97,37 @@ router.get("/items/:id/add",isLoggedIn,function(req,res){
 router.get("/items/:id/buy",function(req,res){
    res.send("Connecting to buying");
 });
+
+router.get("/items/:id/edit",function(req, res) {
+    Item.findById(req.params.id,function(err, foundItem) {
+        if(err){
+            res.redirect("/items")
+        }else{
+            res.render("edit",{item:foundItem});          
+        }
+    })
+   
+});
+
+router.put("/items/:id",function(req,res){
+   Item.findByIdAndUpdate(req.params.id,req.body.item,function(err,updatedItem){
+      if(err){
+          res.redirect("/items");
+      } else{
+          res.redirect("/items/"+req.params.id)
+      }
+   }); 
+});
+
+router.delete("/items/:id",function (req,res){
+    Item.findByIdAndRemove(req.params.id,function(err){
+        if(err){
+            res.redirect("/items");
+        }else{
+            res.redirect("/items");
+        }
+    });
+})
 
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
