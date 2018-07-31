@@ -13,7 +13,7 @@ var itemRoutes      =require("./routes/items"),
     indexRoutes     =require("./routes/index");
     
 mongoose.connect(process.env.DATABASEURL);
-//mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
+
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
