@@ -50,7 +50,7 @@ router.get("/items", function(req, res){
     }
 });
 
-router.post("/items",function(req,res){
+router.post("/items",checkAdmin,function(req,res){
     var name=req.body.name;
     var price=req.body.price;
     var image=req.body.image;
@@ -81,7 +81,7 @@ router.get("/items/:id",function(req, res) {
     });  
 });
 
-router.get("/items/:id/add",isLoggedIn,function(req,res){
+router.get("/items/:id/add",checkAdmin,function(req,res){
    console.log("error");
    Item.findById(req.params.id,function(err, foundItem){
        if(err){
@@ -98,18 +98,18 @@ router.get("/items/:id/buy",function(req,res){
    res.send("Connecting to buying");
 });
 
-router.get("/items/:id/edit",function(req, res) {
+router.get("/items/:id/edit",checkAdmin,function(req, res) {
     Item.findById(req.params.id,function(err, foundItem) {
         if(err){
-            res.redirect("/items")
+            res.redirect("/items");
         }else{
             res.render("edit",{item:foundItem});          
         }
-    })
+    });
    
 });
 
-router.put("/items/:id",function(req,res){
+router.put("/items/:id",checkAdmin,function(req,res){
    Item.findByIdAndUpdate(req.params.id,req.body.item,function(err,updatedItem){
       if(err){
           res.redirect("/items");
@@ -119,7 +119,7 @@ router.put("/items/:id",function(req,res){
    }); 
 });
 
-router.delete("/items/:id",function (req,res){
+router.delete("/items/:id",checkAdmin,function (req,res){
     Item.findByIdAndRemove(req.params.id,function(err){
         if(err){
             res.redirect("/items");
@@ -129,15 +129,28 @@ router.delete("/items/:id",function (req,res){
     });
 })
 
+function checkAdmin(req,res,next){
+    if(req.isAuthenticated()){
+       if(req.user.isAdmin){
+            return next();
+       }
+       else{
+           res.redirect("*");
+       }
+    }else{
+       res.redirect("*");
+   }
+}
+
 function isLoggedIn(req,res,next){
     if(req.isAuthenticated()){
-        return next;
+         next();
     }
     res.redirect("/login");
 }
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-};
+}
 
 module.exports=router;
