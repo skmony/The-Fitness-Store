@@ -6,6 +6,7 @@ var express         =require("express"),
     methodOverride  =require("method-override"),
     passport        =require("passport"),
     localStrategy   =require("passport-local"),
+    flash           =require("connect-flash"),
     User            =require("./models/user");
     
 var itemRoutes      =require("./routes/items"),
@@ -16,6 +17,7 @@ var url=process.env.DATABASEURL||"mongodb://localhost/myShop";
 mongoose.connect(url);
 //mongoose.connect("mongodb://skmony:Password1@ds257551.mlab.com:57551/the_fitness_store");
 
+app.use(flash());
 app.use(bodyParser.urlencoded({extended:true}));
 app.set("view engine","ejs");
 app.use(express.static(__dirname + "/public"));
@@ -36,6 +38,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(function(req,res,next){
    res.locals.currentUser=req.user;
+   res.locals.error=req.flash("error");
+   res.locals.success=req.flash("success");
    next();
 });
 

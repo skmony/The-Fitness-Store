@@ -2,8 +2,10 @@ var express=require("express");
 var router=express.Router();
 var Item=require("../models/items");
 var User=require("../models/user");
+var middleware=require("../middleware");
 
 //INDEX - show all campgrounds
+
 router.get("/items", function(req, res){
     var perPage = 6;
     var pageQuery = parseInt(req.query.page);
@@ -50,7 +52,8 @@ router.get("/items", function(req, res){
     }
 });
 
-router.post("/items",checkAdmin,function(req,res){
+//add a new item
+router.post("/items",middleware.checkAdmin,function(req,res){
     var name=req.body.name;
     var price=req.body.price;
     var image=req.body.image;
@@ -60,45 +63,52 @@ router.post("/items",checkAdmin,function(req,res){
     var newItem={name:name,price:price,image:image,description:description,quantity:quantity};
     Item.create(newItem,function(err,newitem){
         if(err){
-            console.log(err);
+            req.flash("error",err.message);
+            res.redirect("back");
         }else{
             res.redirect("/items/"+newitem.id)
         }
     })
 });
 
-router.get("/items/new",function(req, res) {
+router.get("/items/new",middleware.checkAdmin,function(req, res) {
    res.render("new") 
 });
+
+//show route
 
 router.get("/items/:id",function(req, res) {
     Item.findById(req.params.id,function(err,foundItem){
         if(err){
-            console.log(err)
+            req.flash("error",err.message);
+            res.redirect("/items");
         }else{
               res.render("show",{item:foundItem}); 
         }
     });  
 });
 
-router.get("/items/:id/add",checkAdmin,function(req,res){
+//cart routes
+
+router.get("/items/:id/add",middleware.isLoggedIn,function(req,res){
    console.log("error");
    Item.findById(req.params.id,function(err, foundItem){
        if(err){
-           console.log(err);
+           req.flash("error",err.message);
+           res.redirect("/items");
        }else{
            console.log(foundItem);
        }
-       
    });
-   
 });
 
 router.get("/items/:id/buy",function(req,res){
    res.send("Connecting to buying");
 });
 
-router.get("/items/:id/edit",checkAdmin,function(req, res) {
+//edit route
+
+router.get("/items/:id/edit",middleware.checkAdmin,function(req, res) {
     Item.findById(req.params.id,function(err, foundItem) {
         if(err){
             res.redirect("/items");
@@ -109,45 +119,33 @@ router.get("/items/:id/edit",checkAdmin,function(req, res) {
    
 });
 
-router.put("/items/:id",checkAdmin,function(req,res){
+//update route
+
+router.put("/items/:id",middleware.checkAdmin,function(req,res){
    Item.findByIdAndUpdate(req.params.id,req.body.item,function(err,updatedItem){
       if(err){
+          req.flash("error",err.message)
           res.redirect("/items");
       } else{
+          req.flash("success","Succesfully edited "+updatedItem.name)
           res.redirect("/items/"+req.params.id)
       }
    }); 
 });
 
-router.delete("/items/:id",checkAdmin,function (req,res){
+//delete route
+
+router.delete("/items/:id",middleware.checkAdmin,function (req,res){
     Item.findByIdAndRemove(req.params.id,function(err){
         if(err){
+            req.flash("error",err.message);
             res.redirect("/items");
         }else{
+            req.flash("success","Item deleted");
             res.redirect("/items");
         }
     });
 })
-
-function checkAdmin(req,res,next){
-    if(req.isAuthenticated()){
-       if(req.user.isAdmin){
-            return next();
-       }
-       else{
-           res.redirect("*");
-       }
-    }else{
-       res.redirect("*");
-   }
-}
-
-function isLoggedIn(req,res,next){
-    if(req.isAuthenticated()){
-         next();
-    }
-    res.redirect("/login");
-}
 
 function escapeRegex(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");

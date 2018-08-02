@@ -23,10 +23,11 @@ router.post("/register",function(req,res){
     });
     User.register(newUser,req.body.password,function(err,user){
         if(err){
-            console.log(err);
+            req.flash("error",err.message)
             return res.redirect("/register");
         }
             passport.authenticate("local")(req,res,function(){
+               req.flash("success", "Successfully Signed Up! Nice to meet you " + req.body.username);
                res.redirect("/items"); 
             });
         
@@ -48,7 +49,8 @@ router.post("/login",passport.authenticate("local",
 
 router.get("/logout",function(req, res) {
   req.logout(); 
-  res.redirect("/");
+  req.flash("success","Logged you out!")
+  res.redirect("/items");
 });
 
 module.exports=router;
