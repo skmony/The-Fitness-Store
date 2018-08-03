@@ -25,3 +25,6 @@
 .delete-form{
     display:inline;
 }
+.submit{
+    height: 34px;
+}
