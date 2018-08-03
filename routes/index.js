@@ -9,7 +9,7 @@ router.get("/",function(req,res){
 });
 
 router.get("/cart",middleware.isLoggedIn,function(req, res) {
-    res.render("cart");
+    res.render("cart")    
 });
 
 router.get("/contact",function(req,res){
