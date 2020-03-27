@@ -59,14 +59,12 @@ label{
     max-width: 520px;
 }
 .TEE{
-    display: inline-block;
     float: left;
     width: 350px;
     text-align: center;
     padding-top: 10px;
 }
 .TEEtable{
-    display: inline-block;
     background-color: white;
     padding: 18px;
     margin-left:50px ;
