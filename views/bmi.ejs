@@ -1,0 +1,110 @@
+<%include partials/header%>
+
+<div class="container bmi">
+    <p class="headlineCalculatedBMI">You are a <span class="whiteDiff"><%=data.gender%></span> with age <span
+            class="whiteDiff"><%=data.age%></span>
+        year, weighing
+        <span class="whiteDiff"><%=data.weight%> kg</span> having a height
+        of
+        <span class="whiteDiff"><%=data.height%> cm</span> doing <span class="whiteDiff"><%=data.tee%></span> activity
+    </p>
+    <div class="TEE" style="margin-top:30px">
+        <p style="font-size:17px;">Your Maintenance Calories</p>
+        <div class="dailyCalories">
+            <p class="large"><%=data.TEE%></p>
+            <p>Calories Daily</p>
+            <hr class="dailyCaloriesHR">
+            <p class="large"><%= 12*data.TEE%></p>
+            <p>Calories per week</p>
+        </div>
+    </div>
+    <div class="TEETable">
+        Based on your stats, the best estimate for your maintenance calories is
+        <strong><%=data.TEE%></strong> calories per day based on the Mifflin-St Jeor Formula, which is widely known to
+        be the most
+        accurate. The table below shows the difference if you were to have selected a different activity level.
+        <table class="table table-hover" id="tableTEE">
+            <thead>
+                <tr>
+                    <th scope="col">Activity Level</th>
+                    <th scope="col">Calories</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Little to no exercise</td>
+                    <td><%=1.2*data.BMR %></td>
+                </tr>
+                <tr>
+                    <td>Light exercise (1-3 days per week)</td>
+                    <td><%=1.375*data.BMR %></td>
+                </tr>
+                <tr>
+                    <td>Moderate exercise ( 3-5 days per week)</td>
+                    <td><%=1.55*data.BMR %></td>
+                </tr>
+                <tr>
+                    <td>Heavy exercise( 6-7 days per week)</td>
+                    <td><%=1.725*data.BMR %></td>
+                </tr>
+                <tr>
+                    <td>Very heavy exercise( twice per day, extra heavy workouts)</td>
+                    <td><%=1.9*data.BMR %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <div class="BMRDesc">
+        <p class="BMRValue">Your BMR is <%= data.BMR%></p>
+        <div id="descBMI">
+            <dl>
+                <dt>What your BMR tells you about yourself?</dt><br>
+                <dd>Basal metabolic rate is the rate of energy expenditure per unit time by endothermic animals at rest.
+                    Basically it means how much energy you will burn when doing nothing.</dd>
+
+            </dl>
+        </div>
+    </div>
+    <div class="BMIDesc">
+        <p class="BMIValue">Body mass index (BMI) is a value derived from the mass (weight) and height of a person. The
+            BMI is defined as the body mass divided by the square of the body height, and is universally expressed in
+            units of kg/m2, resulting from mass in kilograms and height in metres.</p>
+        <p class="BMIValue">Your BMI is <%= data.BMI%>, check what that means in the table below</p>
+        <table class="table table-hover" id="tableTEE">
+            <thead>
+                <tr>
+                    <th scope="col">BMI</th>
+                    <th scope="col">Body Health</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> less than 15</td>
+                    <td>Underweight</td>
+                </tr>
+                <tr>
+                    <td> greater than 15 and less than or equal to 25 </td>
+                    <td>Healthy</td>
+                </tr>
+                <tr>
+                    <td> greater than 25 and less than 30 </td>
+                    <td>Overweight</td>
+                </tr>
+                <tr>
+                    <td> greater than 30 </td>
+                    <td>Obese</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+
+
+
+</div>
+
+<%include partials/footer%>

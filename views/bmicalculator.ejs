@@ -1,0 +1,56 @@
+<% include partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align:center;">Calculate your BMI</h1>
+        <div style="width:30%;margin:25px auto;">
+            <form action="/calculatebmi" method="post" class"col-md-6 col-xs-9 .col-sm-9">
+                <div class="form-group">
+                    <label for="gender">Select your gender</label>
+                    <select id="gender" name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                    <label for="age">Enter your Age</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" required placeholder="Weight in kg" name="weight"
+                            id="weight" aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2">kg</span>
+                    </div><br>
+                    <div class=" form-group">
+                        <label for="height">Enter your Height(in cm)</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" required placeholder="Height in cm" name="height"
+                                id="height" aria-describedby="basic-addon2">
+                            <span class="input-group-addon" id="basic-addon2">cm</span>
+                        </div><br>
+                        <div class=" form-group">
+                            <label for="age">Enter your Age</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" required name="age" id="age"
+                                    placeholder="Age in year" aria-describedby="basic-addon2">
+                                <span class="input-group-addon" id="basic-addon2">yr</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">Select your Activity Level</label>
+                            <select id="tee" name="tee">
+                                <option>Little to no exercise</option>
+                                <option>Light exercise (1-3 days per week)</option>
+                                <option>Moderate exercise ( 3-5 days per week)</option>
+                                <option>Heavy exercise( 6-7 days per week)</option>
+                                <option>Very heavy exercise( twice per day, extra heavy workouts)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-lg btn-info btn-block">Calculate BMI</button>
+                        </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<% include partials/footer %>
