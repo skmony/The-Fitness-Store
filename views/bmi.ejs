@@ -20,7 +20,8 @@
     </div>
     <div class="TEETable">
         Based on your stats, the best estimate for your maintenance calories is
-        <strong><%=data.TEE%></strong> calories per day based on the Mifflin-St Jeor Formula, which is widely known to
+        <strong><%=data.TEE%></strong> calories per day based on the <strong>Mifflin-St Jeor Formula</strong> , which is
+        widely known to
         be the most
         accurate. The table below shows the difference if you were to have selected a different activity level.
         <table class="table table-hover" id="tableTEE">
@@ -56,7 +57,7 @@
     </div>
     <br>
     <div class="BMRDesc">
-        <p class="BMRValue">Your BMR is <%= data.BMR%></p>
+        <p class="BMRValue">Your BMR is <strong><%= data.BMR%></strong></p>
         <div id="descBMI">
             <dl>
                 <dt>What your BMR tells you about yourself?</dt><br>
@@ -69,8 +70,10 @@
     <div class="BMIDesc">
         <p class="BMIValue">Body mass index (BMI) is a value derived from the mass (weight) and height of a person. The
             BMI is defined as the body mass divided by the square of the body height, and is universally expressed in
-            units of kg/m2, resulting from mass in kilograms and height in metres.</p>
-        <p class="BMIValue">Your BMI is <%= data.BMI%>, check what that means in the table below</p>
+            units of kg/m2, resulting from mass in kilograms and height in metres.<br>You can ignore your BMI if you
+            lift </p>
+        <p class="BMIValue">Your BMI is <strong><%= data.BMI%></strong>, check what that means in the table
+            below</p>
         <table class="table table-hover" id="tableTEE">
             <thead>
                 <tr>
