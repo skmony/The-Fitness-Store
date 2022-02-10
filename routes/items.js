@@ -19,8 +19,13 @@ router.get("/items", function(req, res){
                     console.log(err);
                     res.redirect("back");
                 } else {
+<<<<<<< HEAD
                     if(allItems.length < 1) {
                         noMatch = "We don't have the product you are looking for, please try again";
+=======
+                    if (allItems.length < 1) {
+                        noMatch = "Please try again";
+>>>>>>> f0b799e (Change message-11)
                     }
                     res.render("index", {
                         items: allItems,
