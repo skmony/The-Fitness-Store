@@ -1,126 +1,124 @@
-.thumbnail img{
-    max-height: 100%;
-    max-width:  100%;
-    
+.thumbnail img {
+  height: 300px;
+  max-width: 350px;
 }
-.thumbnail{
-    padding: 0;
+.thumbnail {
+  padding: 0;
 }
-.price{
-    font-weight: bold;
-    font-size:16px;
+.price {
+  font-weight: bold;
+  font-size: 16px;
 }
 .jumbotron {
-    
-    background-image: url(https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cc14d05af9963bb8ee521c3c4ea6df55&auto=format&fit=crop&w=600&q=60);
-    background-position: 0% 20%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    color: white;
-    text-shadow: black 0.3em 0.3em 0.3em;
+  background-image: url(https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cc14d05af9963bb8ee521c3c4ea6df55&auto=format&fit=crop&w=600&q=60);
+  background-position: 0% 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  text-shadow: black 0.3em 0.3em 0.3em;
 }
-#search{
-    width:500px;
+#search {
+  width: 500px;
 }
-.delete-form{
-    display:inline;
+.delete-form {
+  display: inline;
 }
-.submit{
-    height: 34px;
+.submit {
+  height: 34px;
 }
-#gender{
-    width: 100%;
-    height: 35px;
-    border-color: inherit;
+#gender {
+  width: 100%;
+  height: 35px;
+  border-color: inherit;
 }
-#tee{
-    width: 100%;
-    height: 35px;
-    border-color: inherit;
+#tee {
+  width: 100%;
+  height: 35px;
+  border-color: inherit;
 }
-label{
-    font-weight: 500;
-    font-size: 17px;
+label {
+  font-weight: 500;
+  font-size: 17px;
 }
-.bmi{
-    max-width: 1000px;
-    border: 1px solid F0F0F0;
-    border-radius: 8px;
-    background-color:F0F0F0;
-    padding: 15px;
+.bmi {
+  max-width: 1000px;
+  border: 1px solid F0F0F0;
+  border-radius: 8px;
+  background-color: F0F0F0;
+  padding: 15px;
 }
-.whiteDiff{
-    padding: 3.5px;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: white;
+.whiteDiff {
+  padding: 3.5px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: white;
 }
-#tableTEE{
-    max-width: 520px;
+#tableTEE {
+  max-width: 520px;
 }
-.TEE{
-    float: left;
-    width: 350px;
-    text-align: center;
-    padding-top: 10px;
+.TEE {
+  float: left;
+  width: 350px;
+  text-align: center;
+  padding-top: 10px;
 }
-.TEEtable{
-    background-color: white;
-    padding: 18px;
-    margin-left:50px ;
-    max-width: 520px;
-    border: 1px solid white;
-    border-radius: 10px;
-    float: left;
+.TEEtable {
+  background-color: white;
+  padding: 18px;
+  margin-left: 50px;
+  max-width: 520px;
+  border: 1px solid white;
+  border-radius: 10px;
+  float: left;
 }
-.headlineCalculatedBMI{
-    padding: 8px 0px 15px 0px;
+.headlineCalculatedBMI {
+  padding: 8px 0px 15px 0px;
 }
-.dailyCalories{
-    margin: auto;
-    padding: 12px;
-    width:200px;
-    border: 1px solid #FDF6E5;
-    border-radius: 16px;
-    background-color:#fff44f;
+.dailyCalories {
+  margin: auto;
+  padding: 12px;
+  width: 200px;
+  border: 1px solid #fdf6e5;
+  border-radius: 16px;
+  background-color: #fff44f;
 }
-.dailyCalories .large{
-    font-size: 25px;
+.dailyCalories .large {
+  font-size: 25px;
 }
-dailyCaloriesHR{
-    width: 100%;
+dailyCaloriesHR {
+  width: 100%;
 }
-.BMRDesc{
-    background-color:#f2ebdd;
-    border:1px solid #f2ebdd;
-    border-radius: 10px;
-    margin-top: 100px;
-    margin-left: 30px;
-    padding: 10px;
-    width: 350px;
-    float: left;
+.BMRDesc {
+  background-color: #f2ebdd;
+  border: 1px solid #f2ebdd;
+  border-radius: 10px;
+  margin-top: 100px;
+  margin-left: 30px;
+  padding: 10px;
+  width: 350px;
+  float: left;
 }
-.BMIDesc{
-    margin-top: 25px;
-    text-align: center;
-    margin-left: 20px;
-    width: 520px;
-    padding: 18px;
-    background-color:#f7fcfe;
-    border: 1px solid #f7fcfe;
-    border-radius: 10px;
-    text-align: center;
-    float: left;
+.BMIDesc {
+  margin-top: 25px;
+  text-align: center;
+  margin-left: 20px;
+  width: 520px;
+  padding: 18px;
+  background-color: #f7fcfe;
+  border: 1px solid #f7fcfe;
+  border-radius: 10px;
+  text-align: center;
+  float: left;
 }
-.BMRvalue{
-    text-align: center;
-    font-size: 17px;
+.BMRvalue {
+  text-align: center;
+  font-size: 17px;
 }
-#descBMI{
-    text-align: left;
-    padding: 5px;
+#descBMI {
+  text-align: left;
+  padding: 5px;
 }
-.BMIValue{
-    text-align: left;
-    font-size: 14px;
+.BMIValue {
+  text-align: left;
+  font-size: 14px;
 }

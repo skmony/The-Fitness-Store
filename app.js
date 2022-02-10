@@ -13,7 +13,7 @@ var itemRoutes = require("./routes/items"),
     authRoutes = require("./routes/auth"),
     indexRoutes = require("./routes/index");
 
-var url = process.env.DATABASEURL || "mongodb://localhost/myShop";
+var url = process.env.DATABASEURL || "mongodb+srv://skmony:skmony-project@cluster0.q2qqj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connect("mongodb+srv://skmony:skmony-project@cluster0.q2qqj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -53,10 +53,12 @@ app.get("*", function (req, res) {
     res.render("notFound");
 });
 
-app.listen(process.env.PORT, process.env.IP, function () {
-    console.log("Server has started");
+const PORT = process.env.PORT || 8000;
+
+app.listen(PORT, process.env.IP, function () {
+    console.log("Server has started " + PORT);
 });
 
-// app.listen(80, () => {
+// app.listen(8000, () => {
 //     console.log("Server started on port:8000")
 // })
