@@ -19,18 +19,22 @@ router.get("/items", function (req, res) {
                     console.log(err);
                     res.redirect("back");
                 } else {
+
                     if (allItems.length < 1) {
-                        noMatch = "We don't have the product you are looking for, please try again";
+                        noMatch = "Please try again";
+
+                        if (allItems.length < 1) {
+                            noMatch = "We don't have the product you are looking for, please try again";
+                        }
+                        res.render("index", {
+                            items: allItems,
+                            current: pageNumber,
+                            pages: Math.ceil(count / perPage),
+                            noMatch: noMatch,
+                            search: req.query.search
+                        });
                     }
-                    res.render("index", {
-                        items: allItems,
-                        current: pageNumber,
-                        pages: Math.ceil(count / perPage),
-                        noMatch: noMatch,
-                        search: req.query.search
-                    });
-                }
-            });
+                });
         });
     } else {
         // get all campgrounds from DB
