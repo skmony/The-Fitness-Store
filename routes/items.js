@@ -20,7 +20,7 @@ router.get("/items", function (req, res) {
                     res.redirect("back");
                 } else {
                     if (allItems.length < 1) {
-                        noMatch = "We don't have the product you are looking for, please try again";
+                        noMatch = "Please try again";
                     }
                     res.render("index", {
                         items: allItems,
