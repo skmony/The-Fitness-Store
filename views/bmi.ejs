@@ -14,7 +14,7 @@
             <p class="large"><%=data.TEE%></p>
             <p>Calories Daily</p>
             <hr class="dailyCaloriesHR">
-            <p class="large"><%= 12*data.TEE%></p>
+            <p class="large"><%= Math.ceil(7*data.TEE) %></p>
             <p>Calories per week</p>
         </div>
     </div>
@@ -34,23 +34,23 @@
             <tbody>
                 <tr>
                     <td>Little to no exercise</td>
-                    <td><%=1.2*data.BMR %></td>
+                    <td><%= Math.ceil(1.2*data.BMR) %></td>
                 </tr>
                 <tr>
                     <td>Light exercise (1-3 days per week)</td>
-                    <td><%=1.375*data.BMR %></td>
+                    <td><%= Math.ceil(1.375*data.BMR) %></td>
                 </tr>
                 <tr>
                     <td>Moderate exercise ( 3-5 days per week)</td>
-                    <td><%=1.55*data.BMR %></td>
+                    <td><%= Math.ceil(1.55*data.BMR) %></td>
                 </tr>
                 <tr>
                     <td>Heavy exercise( 6-7 days per week)</td>
-                    <td><%=1.725*data.BMR %></td>
+                    <td><%= Math.ceil(1.725*data.BMR) %></td>
                 </tr>
                 <tr>
                     <td>Very heavy exercise( twice per day, extra heavy workouts)</td>
-                    <td><%=1.9*data.BMR %></td>
+                    <td><%= Math.ceil(1.9*data.BMR) %></td>
                 </tr>
             </tbody>
         </table>
